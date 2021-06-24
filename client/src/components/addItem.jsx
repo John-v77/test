@@ -10,7 +10,12 @@ function AddItem(props) {
         event.preventDefault()
         axios
         .post('http//localhost:5000', {post})
-        .then(console.log)
+        // .then(console.log)
+        .then(newPost => {
+            // console.log('new Post:', newPost)
+            // console.log('props')                       seach for props.history
+            props.history.push(`displayAllItems`)    //this redirect the page to page displayAllItems
+        })
         .catch(console.error)
     }
 

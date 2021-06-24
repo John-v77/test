@@ -11,5 +11,10 @@ router.post('/addAPost ', (req, res, next) => {
     res.status(200).json(post)
     })
 
+router.get('/allPosts', async (req, res, next) => {
+    let allPosts = await Post.find({})      // this Post is the name of the model in the schema
+    res.status(200).json(allPosts)
+})
+
 module.exports = router   // this "router" gets imported on index.js - backend , line 19:    app.use('/api', require('./routes'))
 
