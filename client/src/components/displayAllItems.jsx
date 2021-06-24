@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import actions from '../api';
 
-function displayAllItems(props) {
+function DisplayAllItems(props) {
 
     const[posts, setPosts] = useState([])
 
@@ -35,4 +34,4 @@ function displayAllItems(props) {
     );
 }
 
-export default displayAllItems;
+export default DisplayAllItems;
