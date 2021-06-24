@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import actions from '../api';
 
 function AddItem(props) {
 
@@ -8,11 +9,14 @@ function AddItem(props) {
     const handleSubmit =(event)=>{
     //send it to the server
         event.preventDefault()
-        axios
-        .post('http//localhost:5000', {post})
+        // moved to api.js
+        // axios
+        // .post('http//localhost:5000/api/addItem', {post})
         // .then(console.log)
+
+        actions.addItem(post)
         .then(newPost => {
-            // console.log('new Post:', newPost)
+            console.log('new Post:', newPost)
             // console.log('props')                       seach for props.history
             props.history.push(`displayAllItems`)    //this redirect the page to page displayAllItems
         })
