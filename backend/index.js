@@ -4,6 +4,7 @@ const express = require('express')
 // const router = express.Router()  moved to routes.js
 
 require('dotenv').config()  
+const bodyParser = require('body-parser');
 
 const cors = require('cors')
 const app = express()
@@ -15,8 +16,6 @@ app.use(
     })
 )
 
-
-app.use('/api', require('./routes'))   // after adding this line on front end route must include /api, eg: localhost:5000/api/addaPost
 
 const MONGODB_URI=process.env.MONGODB_URI || `mongodb://localhost/localIronPlate`
 
@@ -31,6 +30,13 @@ mongoose
 // app.post('/addAPost ', (req, res, next) => {
 //     console.log("we made it to the back end")           Moved to routes.js
 //     })
+
+
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(bodyParser.json());
+
+
+app.use('/api', require('./routes'))   // after adding this line on front end route must include /api, eg: localhost:5000/api/addaPost
 
 
 const PORT = process.env.PORT || 5000
